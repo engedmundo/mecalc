@@ -1,0 +1,30 @@
+# Notas pessoais (somente local, não versionar)
+notas/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Ambientes e ferramentas
+.venv/
+.env
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Bancos de dados locais
+*.db
+*.sqlite3
+
+# Documentação gerada (MkDocs)
+site/
+
+# Sistema e editores
+.DS_Store
+.vscode/
+.idea/
