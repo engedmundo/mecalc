@@ -38,7 +38,7 @@ A pasta [docs/](docs/) reúne os detalhes do projeto:
 
 ## Stack
 
-Python 3.12 · Streamlit · SQLAlchemy 2.0 + Alembic · pint · NumPy/SciPy · Plotly · pytest · ruff · mypy · uv · Docker · MkDocs Material
+Python 3.12 · Streamlit · Pydantic v2 · SQLAlchemy 2.0 + Alembic · pint · NumPy/SciPy · Plotly · pytest · ruff · mypy · uv · Docker · MkDocs Material
 
 ## Aviso de responsabilidade
 
@@ -46,4 +46,4 @@ O mecalc é uma ferramenta de **apoio** ao cálculo de engenharia. Ele não subs
 
 ## Licença
 
-MIT *(arquivo LICENSE a ser adicionado na Fase 0)*
+[MIT](LICENSE)
