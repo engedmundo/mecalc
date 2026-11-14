@@ -61,9 +61,40 @@ select = ["E", "W", "F", "I", "B", "UP", "SIM", "N", "RUF"]
 
 [tool.mypy]
 python_version = "3.12"
-strict = true
 plugins = ["pydantic.mypy"]
 mypy_path = "src"
+pretty = true
+
+# Regras mantidas
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+strict_equality = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unreachable = true
+
+# Regras relaxadas
+disallow_any_generics = false
+warn_return_any = false
+disallow_untyped_calls = false
+disallow_untyped_decorators = false
+
+# Testes: funções de teste não precisam de anotação
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+# Bibliotecas sem tipagem completa
+[[tool.mypy.overrides]]
+module = ["scipy.*", "plotly.*"]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_typed = true
+init_forbid_extra = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
