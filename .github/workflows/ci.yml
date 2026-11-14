@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    env:
+      UV_PYTHON: "3.12"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Instalar dependências
+        run: uv sync --all-extras --locked
+
+      - name: Lint (ruff)
+        run: uv run ruff check .
+
+      - name: Formatação (ruff)
+        run: uv run ruff format --check .
+
+      - name: Tipos (mypy)
+        run: uv run mypy src
+
+      - name: Testes (pytest)
+        # Código 5 = nenhum teste encontrado. Aceito enquanto não houver testes;
+        # remover este tratamento quando o primeiro teste for adicionado.
+        run: |
+          set +e
+          uv run pytest
+          status=$?
+          if [ "$status" -eq 5 ]; then
+            echo "Nenhum teste encontrado (ainda)."
+            exit 0
+          fi
+          exit "$status"
