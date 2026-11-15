@@ -59,6 +59,9 @@ src = ["src", "tests"]
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "B", "UP", "SIM", "N", "RUF"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["mecalc", "tests"]
+
 [tool.mypy]
 python_version = "3.12"
 plugins = ["pydantic.mypy"]
@@ -97,5 +100,6 @@ init_typed = true
 init_forbid_extra = true
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-ra --strict-markers"
+testpaths = ["tests", "src"]
+pythonpath = ["."]
+addopts = "-ra --strict-markers --doctest-modules --import-mode=importlib"
