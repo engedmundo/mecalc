@@ -68,6 +68,10 @@ plugins = ["pydantic.mypy"]
 mypy_path = "src"
 pretty = true
 
+# O mypy não entende decoradores aplicados sobre @property. No caso do
+# @computed_field do Pydantic, a combinação é suportada e documentada.
+disable_error_code = ["prop-decorator"]
+
 # Regras mantidas
 disallow_untyped_defs = true
 disallow_incomplete_defs = true
